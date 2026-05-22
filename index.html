@@ -1,0 +1,1206 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Punto Social — Cupones Exclusivos</title>
+<meta name="description" content="60 descuentos exclusivos en 10 restaurantes seleccionados. Una sola compra, hasta 6 meses de vigencia.">
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Fraunces:opsz,wght@9..144,300;9..144,400;9..144,500;9..144,600&family=DM+Sans:wght@400;500;600;700&display=swap" rel="stylesheet">
+<style>
+:root{
+  --tinta:#0F0F0F;
+  --tinta-suave:#262626;
+  --gris:#6E6E6E;
+  --gris-claro:#E8E6E1;
+  --crema:#F4F1EA;
+  --blanco:#FAF8F3;
+  --acento:#D94B1E;
+  --acento-suave:#E96A40;
+  --acento-oscuro:#A8371A;
+  --verde:#4A5D3A;
+  --dorado:#D94B1E;
+}
+
+*{box-sizing:border-box;margin:0;padding:0}
+html{scroll-behavior:smooth}
+body{
+  font-family:'DM Sans', system-ui, sans-serif;
+  font-size:19px;
+  line-height:1.55;
+  color:var(--tinta);
+  background:var(--crema);
+  -webkit-font-smoothing:antialiased;
+  text-rendering:optimizeLegibility;
+}
+body.texto-grande{font-size:22px}
+body.texto-grande h1{font-size:clamp(54px, 8vw, 96px) !important}
+body.texto-grande h2{font-size:clamp(38px, 5vw, 60px) !important}
+
+img{max-width:100%;display:block}
+a{color:inherit}
+button{font-family:inherit;cursor:pointer;border:none;background:none}
+
+/* Accesibilidad bar */
+.acc-bar{
+  background:var(--tinta);
+  color:var(--crema);
+  padding:10px 24px;
+  display:flex;
+  justify-content:center;
+  align-items:center;
+  gap:16px;
+  font-size:15px;
+  flex-wrap:wrap;
+}
+.acc-bar button{
+  color:var(--crema);
+  border:1px solid rgba(247,244,238,0.4);
+  padding:6px 14px;
+  border-radius:6px;
+  font-size:15px;
+  font-weight:500;
+  min-height:36px;
+  transition:all 0.2s;
+}
+.acc-bar button:hover, .acc-bar button:focus{
+  background:var(--crema);
+  color:var(--tinta);
+  outline:none;
+}
+
+/* Header */
+.header{
+  border-bottom:1px solid var(--gris-claro);
+  padding:20px 32px;
+  position:sticky;
+  top:0;
+  z-index:50;
+  backdrop-filter:blur(10px);
+  background:rgba(247,244,238,0.95);
+}
+.header-inner{
+  max-width:1280px;
+  margin:0 auto;
+  display:flex;
+  justify-content:space-between;
+  align-items:center;
+  gap:32px;
+}
+.logo{
+  text-decoration:none;
+  color:var(--tinta);
+  display:flex;
+  align-items:center;
+  gap:10px;
+  height:44px;
+}
+.logo img{
+  height:100%;
+  width:auto;
+  display:block;
+  /* Convierte el logo negro al naranja óxido #D94B1E */
+  filter:brightness(0) saturate(100%) invert(33%) sepia(76%) saturate(2756%) hue-rotate(355deg) brightness(91%) contrast(91%);
+}
+.nav{display:flex;align-items:center;gap:4px}
+.nav a{
+  font-size:16px;
+  font-weight:500;
+  color:var(--tinta-suave);
+  text-decoration:none;
+  padding:12px 18px;
+  border-radius:8px;
+  min-height:48px;
+  display:inline-flex;
+  align-items:center;
+  transition:all 0.15s;
+}
+.nav a:hover, .nav a:focus{color:var(--tinta);background:rgba(0,0,0,0.04);outline:none}
+.nav .cta{
+  background:var(--tinta);
+  color:var(--crema);
+  padding:14px 24px;
+  border-radius:999px;
+  font-weight:600;
+}
+.nav .cta:hover, .nav .cta:focus{background:var(--acento);color:var(--crema)}
+
+.menu-toggle{display:none}
+
+/* Hero */
+.hero{
+  padding:80px 32px 100px;
+  max-width:1280px;
+  margin:0 auto;
+}
+.hero-grid{
+  display:grid;
+  grid-template-columns:1.1fr 1fr;
+  gap:80px;
+  align-items:center;
+}
+.eyebrow{
+  display:inline-block;
+  font-size:14px;
+  font-weight:600;
+  letter-spacing:0.15em;
+  text-transform:uppercase;
+  color:var(--acento);
+  margin-bottom:24px;
+}
+h1{
+  font-family:'Fraunces', serif;
+  font-size:clamp(48px, 7vw, 84px);
+  font-weight:400;
+  line-height:1.02;
+  letter-spacing:-0.025em;
+  color:var(--tinta);
+  margin-bottom:28px;
+}
+h1 em{font-style:normal;color:var(--acento);font-weight:500}
+.hero-desc{
+  font-size:21px;
+  color:var(--tinta-suave);
+  margin-bottom:36px;
+  max-width:520px;
+  line-height:1.5;
+}
+.hero-cta{
+  display:flex;
+  gap:14px;
+  flex-wrap:wrap;
+  align-items:center;
+}
+.btn{
+  display:inline-flex;
+  align-items:center;
+  gap:10px;
+  padding:18px 32px;
+  font-size:17px;
+  font-weight:600;
+  border-radius:999px;
+  text-decoration:none;
+  min-height:60px;
+  transition:all 0.15s;
+}
+.btn-primary{background:var(--tinta);color:var(--crema)}
+.btn-primary:hover, .btn-primary:focus{background:var(--acento);outline:none}
+.btn-ghost{color:var(--tinta);background:transparent;border:1.5px solid var(--tinta)}
+.btn-ghost:hover, .btn-ghost:focus{background:var(--tinta);color:var(--crema);outline:none}
+
+.hero-meta{
+  display:flex;
+  gap:32px;
+  margin-top:48px;
+  padding-top:32px;
+  border-top:1px solid var(--gris-claro);
+  flex-wrap:wrap;
+}
+.meta-item{display:flex;flex-direction:column;gap:4px}
+.meta-num{
+  font-family:'Fraunces', serif;
+  font-size:38px;
+  line-height:1;
+  color:var(--tinta);
+}
+.meta-label{
+  font-size:14px;
+  color:var(--gris);
+  text-transform:uppercase;
+  letter-spacing:0.08em;
+  font-weight:500;
+}
+
+.hero-visual{position:relative;aspect-ratio:4/5;max-height:600px}
+.hero-img{
+  position:absolute;
+  border-radius:4px;
+  overflow:hidden;
+  box-shadow:0 20px 60px rgba(0,0,0,0.12);
+}
+.hero-img img{width:100%;height:100%;object-fit:cover}
+.hero-img-1{top:0;left:0;width:65%;height:60%;z-index:1}
+.hero-img-2{bottom:0;right:0;width:55%;height:55%;z-index:2}
+.hero-tag{
+  position:absolute;
+  bottom:20%;
+  left:-20px;
+  background:var(--crema);
+  padding:16px 22px;
+  border-radius:8px;
+  box-shadow:0 12px 32px rgba(0,0,0,0.12);
+  font-size:14px;
+  z-index:3;
+  display:flex;
+  align-items:center;
+  gap:12px;
+}
+.hero-tag-dot{width:8px;height:8px;background:var(--verde);border-radius:50%}
+.hero-tag strong{display:block;font-size:16px;margin-bottom:2px}
+.hero-tag span.muted{color:var(--gris);font-size:13px}
+
+/* Tira categorías */
+.tira{
+  border-top:1px solid var(--gris-claro);
+  border-bottom:1px solid var(--gris-claro);
+  padding:32px;
+}
+.tira-inner{
+  max-width:1280px;
+  margin:0 auto;
+  display:flex;
+  justify-content:space-between;
+  align-items:center;
+  gap:32px;
+  flex-wrap:wrap;
+}
+.tira-label{
+  font-size:13px;
+  text-transform:uppercase;
+  letter-spacing:0.12em;
+  color:var(--gris);
+  font-weight:600;
+}
+.cat-list{display:flex;gap:8px;flex-wrap:wrap}
+.cat-chip{
+  padding:10px 18px;
+  border:1px solid var(--gris-claro);
+  border-radius:999px;
+  font-size:15px;
+  text-decoration:none;
+  color:var(--tinta-suave);
+  transition:all 0.15s;
+  display:inline-flex;
+  align-items:center;
+  gap:8px;
+}
+.cat-chip:hover{border-color:var(--tinta);color:var(--tinta)}
+.cat-chip.active{background:var(--tinta);color:var(--crema);border-color:var(--tinta)}
+.cat-chip .soon{
+  font-size:11px;
+  background:var(--gris-claro);
+  padding:2px 8px;
+  border-radius:999px;
+  color:var(--gris);
+  text-transform:uppercase;
+  letter-spacing:0.05em;
+}
+
+section{padding:100px 32px}
+.container{max-width:1280px;margin:0 auto}
+h2{
+  font-family:'Fraunces', serif;
+  font-size:clamp(36px, 4.5vw, 56px);
+  font-weight:400;
+  line-height:1.1;
+  letter-spacing:-0.02em;
+  color:var(--tinta);
+  margin-bottom:20px;
+  max-width:760px;
+}
+h2 em{font-style:normal;color:var(--acento);font-weight:500}
+.section-desc{
+  font-size:19px;
+  color:var(--gris);
+  max-width:620px;
+  margin-bottom:60px;
+}
+
+/* Cómo funciona */
+.how-steps{
+  display:grid;
+  grid-template-columns:repeat(4, 1fr);
+  gap:0;
+  border-top:1px solid var(--gris-claro);
+}
+.step{
+  padding:40px 28px 40px 0;
+  border-right:1px solid var(--gris-claro);
+}
+.step:last-child{border-right:none;padding-right:0}
+.step:nth-child(n+2){padding-left:32px}
+.step-num{
+  font-family:'Fraunces', serif;
+  font-size:14px;
+  color:var(--acento);
+  letter-spacing:0.1em;
+  margin-bottom:16px;
+  font-weight:500;
+}
+.step h3{
+  font-family:'Fraunces', serif;
+  font-size:26px;
+  font-weight:400;
+  line-height:1.2;
+  margin-bottom:12px;
+}
+.step p{color:var(--gris);font-size:17px;line-height:1.55}
+
+/* Restaurantes */
+.rests{background:var(--blanco)}
+.tira{background:var(--blanco)}
+.faq{background:var(--blanco)}
+.rests-grid{
+  display:grid;
+  grid-template-columns:repeat(auto-fill, minmax(280px, 1fr));
+  gap:32px 24px;
+}
+.rest-card{
+  text-decoration:none;
+  color:inherit;
+  display:flex;
+  flex-direction:column;
+  gap:14px;
+  transition:transform 0.3s;
+}
+.rest-card:hover{transform:translateY(-4px)}
+.rest-img{
+  aspect-ratio:4/5;
+  overflow:hidden;
+  border-radius:4px;
+  position:relative;
+  background:var(--gris-claro);
+}
+.rest-img img{
+  width:100%;
+  height:100%;
+  object-fit:cover;
+  transition:transform 0.5s;
+}
+.rest-card:hover .rest-img img{transform:scale(1.04)}
+.rest-badge{
+  position:absolute;
+  top:14px;
+  left:14px;
+  background:rgba(247,244,238,0.95);
+  padding:6px 12px;
+  border-radius:999px;
+  font-size:13px;
+  font-weight:600;
+  color:var(--tinta);
+  backdrop-filter:blur(6px);
+}
+.rest-meta{display:flex;flex-direction:column;gap:4px}
+.rest-name{
+  font-family:'Fraunces', serif;
+  font-size:24px;
+  font-weight:400;
+  line-height:1.2;
+}
+.rest-kind{color:var(--gris);font-size:15px}
+
+/* Precio */
+.precio{background:var(--tinta);color:var(--crema)}
+.precio-grid{
+  display:grid;
+  grid-template-columns:1fr 1fr;
+  gap:80px;
+  align-items:center;
+}
+.precio .eyebrow{color:var(--dorado)}
+.precio h2{color:var(--crema)}
+.precio h2 em{color:var(--dorado)}
+.precio-desc{color:rgba(247,244,238,0.75);font-size:19px;margin-bottom:32px}
+.precio-features{list-style:none;display:flex;flex-direction:column;gap:14px;margin-bottom:36px}
+.precio-features li{
+  display:flex;
+  align-items:flex-start;
+  gap:14px;
+  font-size:17px;
+  color:rgba(247,244,238,0.9);
+  padding-bottom:14px;
+  border-bottom:1px solid rgba(247,244,238,0.1);
+}
+.precio-features li::before{
+  content:"✓";
+  color:var(--dorado);
+  font-weight:700;
+  flex-shrink:0;
+  font-size:20px;
+  line-height:1;
+}
+.precio-card{
+  background:var(--crema);
+  color:var(--tinta);
+  padding:48px;
+  border-radius:8px;
+}
+.precio-card-label{
+  font-size:14px;
+  text-transform:uppercase;
+  letter-spacing:0.1em;
+  color:var(--gris);
+  font-weight:600;
+  margin-bottom:16px;
+}
+.precio-num{
+  font-family:'Fraunces', serif;
+  font-size:96px;
+  line-height:1;
+  letter-spacing:-0.03em;
+  color:var(--tinta);
+  margin-bottom:8px;
+}
+.precio-num .moneda{font-size:32px;vertical-align:top;margin-right:6px;color:var(--gris)}
+.precio-mxn{font-size:16px;color:var(--gris);margin-bottom:20px}
+.precio-ahorro{
+  background:rgba(62,92,58,0.1);
+  color:var(--verde);
+  padding:12px 16px;
+  border-radius:6px;
+  font-size:15px;
+  font-weight:600;
+  margin-bottom:28px;
+  display:inline-block;
+}
+.precio-card .btn{width:100%;justify-content:center;background:var(--tinta);color:var(--crema)}
+.precio-card .btn:hover{background:var(--acento)}
+.precio-card-foot{
+  margin-top:20px;
+  font-size:14px;
+  color:var(--gris);
+  text-align:center;
+}
+
+/* Notificaciones */
+.notif{background:var(--crema);position:relative;overflow:hidden}
+.notif::before{
+  content:"";
+  position:absolute;
+  top:-100px;right:-50px;
+  width:400px;height:400px;
+  background:radial-gradient(circle, rgba(184,137,62,0.12), transparent 70%);
+  pointer-events:none;
+}
+.notif-grid{
+  display:grid;
+  grid-template-columns:1fr 1.1fr;
+  gap:80px;
+  align-items:center;
+  position:relative;
+}
+.notif-visual{
+  background:var(--blanco);
+  border:1px solid var(--gris-claro);
+  border-radius:12px;
+  padding:36px;
+  box-shadow:0 24px 60px rgba(0,0,0,0.06);
+}
+.notif-visual-head{
+  display:flex;
+  align-items:center;
+  gap:12px;
+  padding-bottom:20px;
+  border-bottom:1px solid var(--gris-claro);
+  margin-bottom:20px;
+}
+.avatar{
+  width:42px;
+  height:42px;
+  background:var(--gris-claro);
+  border-radius:50%;
+  display:flex;
+  align-items:center;
+  justify-content:center;
+  font-family:'Fraunces', serif;
+  font-weight:500;
+  color:var(--tinta);
+}
+.notif-visual-head strong{display:block;font-size:16px}
+.notif-visual-head span{color:var(--gris);font-size:14px}
+.notif-pref{
+  display:flex;
+  justify-content:space-between;
+  align-items:center;
+  padding:18px 0;
+  border-bottom:1px solid var(--gris-claro);
+  gap:16px;
+}
+.notif-pref:last-child{border-bottom:none}
+.notif-pref-info{display:flex;flex-direction:column;gap:2px;min-width:0}
+.notif-pref-name{font-weight:600;font-size:16px}
+.notif-pref-desc{color:var(--gris);font-size:14px}
+.toggle{
+  width:48px;
+  height:28px;
+  background:var(--gris-claro);
+  border-radius:999px;
+  position:relative;
+  cursor:pointer;
+  transition:background 0.2s;
+  flex-shrink:0;
+}
+.toggle::after{
+  content:"";
+  position:absolute;
+  top:3px;left:3px;
+  width:22px;
+  height:22px;
+  background:var(--blanco);
+  border-radius:50%;
+  transition:transform 0.2s;
+  box-shadow:0 1px 3px rgba(0,0,0,0.2);
+}
+.toggle.on{background:var(--verde)}
+.toggle.on::after{transform:translateX(20px)}
+
+.notif-form{
+  margin-top:32px;
+  display:flex;
+  flex-direction:column;
+  gap:16px;
+}
+.input-group{display:flex;flex-direction:column;gap:8px}
+.input-group label{font-size:14px;font-weight:600;color:var(--tinta)}
+.input-group input{
+  padding:14px 18px;
+  border:1px solid var(--gris-claro);
+  border-radius:8px;
+  font-family:inherit;
+  font-size:16px;
+  background:var(--blanco);
+  color:var(--tinta);
+  transition:border-color 0.15s;
+  min-height:52px;
+}
+.input-group input:focus{border-color:var(--tinta);outline:none}
+.checks{display:flex;flex-direction:column;gap:12px;margin:4px 0}
+.check{
+  display:flex;
+  align-items:center;
+  gap:12px;
+  font-size:16px;
+  cursor:pointer;
+  padding:6px 0;
+}
+.check input{width:22px;height:22px;accent-color:var(--acento);cursor:pointer}
+.notif-submit{
+  background:var(--tinta);
+  color:var(--crema);
+  padding:18px 24px;
+  border-radius:999px;
+  font-size:17px;
+  font-weight:600;
+  min-height:60px;
+  margin-top:8px;
+  transition:background 0.15s;
+}
+.notif-submit:hover, .notif-submit:focus{background:var(--acento);outline:none}
+.notif-disclaimer{font-size:13px;color:var(--gris);margin-top:8px;text-align:center}
+.notif-success{
+  background:rgba(62,92,58,0.1);
+  border:1px solid var(--verde);
+  color:var(--verde);
+  padding:16px;
+  border-radius:8px;
+  font-size:15px;
+  display:none;
+  margin-top:12px;
+}
+.notif-success.show{display:block}
+
+/* FAQ */
+.faqs{display:flex;flex-direction:column;max-width:880px}
+.faq-item{border-top:1px solid var(--gris-claro)}
+.faq-item:last-child{border-bottom:1px solid var(--gris-claro)}
+.faq-item summary{
+  list-style:none;
+  padding:28px 0;
+  font-family:'Fraunces', serif;
+  font-size:24px;
+  font-weight:400;
+  cursor:pointer;
+  display:flex;
+  justify-content:space-between;
+  align-items:center;
+  gap:16px;
+  min-height:80px;
+}
+.faq-item summary::-webkit-details-marker{display:none}
+.faq-item summary::after{
+  content:"+";
+  font-family:'DM Sans', sans-serif;
+  font-size:28px;
+  color:var(--acento);
+  transition:transform 0.2s;
+  flex-shrink:0;
+  font-weight:300;
+}
+.faq-item[open] summary::after{transform:rotate(45deg)}
+.faq-item-content{
+  padding:0 0 28px;
+  font-size:17px;
+  color:var(--gris);
+  line-height:1.6;
+  max-width:680px;
+}
+
+/* CTA Final */
+.cta-final{background:var(--crema);text-align:center}
+.cta-final h2{margin:0 auto 20px;text-align:center}
+.cta-final .section-desc{margin:0 auto 40px;text-align:center}
+.cta-final-contact{
+  display:flex;
+  justify-content:center;
+  gap:32px;
+  margin-top:48px;
+  padding-top:40px;
+  border-top:1px solid var(--gris-claro);
+  flex-wrap:wrap;
+}
+.contact-item{
+  display:flex;
+  flex-direction:column;
+  align-items:center;
+  gap:6px;
+  text-decoration:none;
+  color:var(--tinta);
+  padding:8px 16px;
+  border-radius:8px;
+  transition:background 0.15s;
+}
+.contact-item:hover{background:rgba(0,0,0,0.04)}
+.contact-label{font-size:13px;color:var(--gris);text-transform:uppercase;letter-spacing:0.08em;font-weight:600}
+.contact-value{font-family:'Fraunces', serif;font-size:22px;font-weight:500}
+
+/* Footer */
+.footer{background:var(--tinta);color:var(--crema);padding:80px 32px 40px}
+.footer-inner{
+  max-width:1280px;
+  margin:0 auto;
+  display:grid;
+  grid-template-columns:2fr 1fr 1fr 1fr;
+  gap:60px;
+  margin-bottom:60px;
+}
+.footer h4{
+  font-size:13px;
+  text-transform:uppercase;
+  letter-spacing:0.12em;
+  margin-bottom:20px;
+  color:var(--dorado);
+  font-weight:600;
+}
+.footer a{
+  color:rgba(247,244,238,0.8);
+  text-decoration:none;
+  display:block;
+  padding:6px 0;
+  font-size:15px;
+  transition:color 0.15s;
+}
+.footer a:hover{color:var(--crema)}
+.footer-tag{
+  margin-bottom:20px;
+  height:46px;
+  display:block;
+}
+.footer-tag img{
+  height:100%;
+  width:auto;
+  display:block;
+  filter:brightness(0) invert(1) opacity(0.92);
+}
+.footer-desc{font-size:15px;color:rgba(247,244,238,0.7);line-height:1.6;max-width:320px}
+.footer-bottom{
+  max-width:1280px;
+  margin:0 auto;
+  border-top:1px solid rgba(247,244,238,0.15);
+  padding-top:32px;
+  display:flex;
+  justify-content:space-between;
+  align-items:center;
+  flex-wrap:wrap;
+  gap:20px;
+  font-size:14px;
+  color:rgba(247,244,238,0.6);
+}
+.footer-redes{display:flex;gap:10px}
+.footer-redes a{
+  width:40px;
+  height:40px;
+  border:1px solid rgba(247,244,238,0.2);
+  border-radius:50%;
+  display:flex;
+  align-items:center;
+  justify-content:center;
+  padding:0;
+  font-size:14px;
+}
+.footer-redes a:hover{background:var(--crema);color:var(--tinta);border-color:var(--crema)}
+
+/* WhatsApp flotante */
+.wa{
+  position:fixed;
+  bottom:24px;right:24px;
+  background:#25D366;
+  color:#fff;
+  width:60px;height:60px;
+  border-radius:50%;
+  display:flex;
+  align-items:center;
+  justify-content:center;
+  text-decoration:none;
+  font-size:28px;
+  box-shadow:0 8px 24px rgba(0,0,0,0.2);
+  z-index:40;
+  transition:transform 0.2s;
+}
+.wa:hover, .wa:focus{transform:scale(1.05);outline:none}
+
+@media (max-width:900px){
+  .header{padding:16px 20px}
+  .nav{display:none;position:fixed;top:0;left:0;right:0;bottom:0;background:var(--crema);flex-direction:column;justify-content:center;align-items:stretch;padding:80px 32px;gap:12px;z-index:60}
+  .nav.open{display:flex}
+  .nav a{font-size:22px;padding:18px;justify-content:center}
+  .menu-toggle{
+    display:flex;
+    width:48px;height:48px;
+    border-radius:8px;
+    align-items:center;
+    justify-content:center;
+    background:transparent;
+    flex-direction:column;
+    gap:5px;
+    z-index:70;
+    position:relative;
+  }
+  .menu-toggle span{display:block;width:22px;height:2px;background:var(--tinta);transition:all 0.2s}
+  .menu-toggle.open span:nth-child(1){transform:translateY(7px) rotate(45deg)}
+  .menu-toggle.open span:nth-child(2){opacity:0}
+  .menu-toggle.open span:nth-child(3){transform:translateY(-7px) rotate(-45deg)}
+
+  .hero{padding:48px 20px 60px}
+  .hero-grid{grid-template-columns:1fr;gap:48px}
+  .hero-visual{max-width:420px;margin:0 auto;width:100%}
+  .hero-meta{gap:24px}
+  .meta-num{font-size:32px}
+
+  section{padding:60px 20px}
+  .how-steps{grid-template-columns:1fr}
+  .step{border-right:none;border-bottom:1px solid var(--gris-claro);padding:32px 0 !important}
+  .step:last-child{border-bottom:none}
+
+  .precio-grid{grid-template-columns:1fr;gap:40px}
+  .precio-num{font-size:72px}
+  .precio-card{padding:32px}
+
+  .notif-grid{grid-template-columns:1fr;gap:40px}
+
+  .footer-inner{grid-template-columns:1fr 1fr;gap:40px}
+  .footer-bottom{flex-direction:column;text-align:center}
+}
+@media (max-width:560px){
+  .footer-inner{grid-template-columns:1fr}
+  .tira-inner{flex-direction:column;align-items:flex-start;gap:16px}
+}
+@media (prefers-reduced-motion:reduce){
+  *{animation:none !important;transition:none !important}
+  html{scroll-behavior:auto}
+}
+:focus-visible{outline:3px solid var(--acento);outline-offset:3px}
+</style>
+</head>
+<body>
+
+<div class="acc-bar">
+  <span>Tamaño de letra:</span>
+  <button onclick="document.body.classList.toggle('texto-grande')">A+ Más grande</button>
+  <button onclick="document.body.classList.remove('texto-grande')">A Normal</button>
+</div>
+
+<header class="header">
+  <div class="header-inner">
+    <a href="#" class="logo" aria-label="Punto Social"><img src="https://www.puntosocialmx.com/img/logo.PNG" alt="Punto Social"></a>
+    <button class="menu-toggle" aria-label="Abrir menú" onclick="toggleMenu(this)">
+      <span></span><span></span><span></span>
+    </button>
+    <nav class="nav" id="nav">
+      <a href="#como">Cómo funciona</a>
+      <a href="#restaurantes">Restaurantes</a>
+      <a href="#cuponera">Cuponera</a>
+      <a href="#notificaciones">Notificaciones</a>
+      <a href="#preguntas">Preguntas</a>
+      <a href="#cuponera" class="cta">Comprar</a>
+    </nav>
+  </div>
+</header>
+
+<section class="hero">
+  <div class="hero-grid">
+    <div>
+      <span class="eyebrow">Cupones exclusivos · 2026</span>
+      <h1>Una compra. <em>Sesenta</em> formas de ahorrar.</h1>
+      <p class="hero-desc">
+        Diez restaurantes seleccionados de la ciudad, seis descuentos exclusivos en cada uno. Tuyos por hasta seis meses, sin apps que descargar.
+      </p>
+      <div class="hero-cta">
+        <a href="#cuponera" class="btn btn-primary">Quiero mi cuponera</a>
+        <a href="#como" class="btn btn-ghost">Cómo funciona</a>
+      </div>
+      <div class="hero-meta">
+        <div class="meta-item"><span class="meta-num">10</span><span class="meta-label">Restaurantes</span></div>
+        <div class="meta-item"><span class="meta-num">60</span><span class="meta-label">Descuentos</span></div>
+        <div class="meta-item"><span class="meta-num">6 meses</span><span class="meta-label">Vigencia</span></div>
+        <div class="meta-item"><span class="meta-num">$15,000+</span><span class="meta-label">Ahorro estimado</span></div>
+      </div>
+    </div>
+    <div class="hero-visual">
+      <div class="hero-img hero-img-1">
+        <img src="https://www.puntosocialmx.com/img/rest9-1.jpg" alt="Ikebana Teppan">
+      </div>
+      <div class="hero-img hero-img-2">
+        <img src="https://www.puntosocialmx.com/img/rest2-1.jpg" alt="Nuut Grill">
+      </div>
+      <div class="hero-tag">
+        <span class="hero-tag-dot"></span>
+        <div>
+          <strong>2x1 en yakimeshi</strong>
+          <span class="muted">Disponible · Ikebana Teppan</span>
+        </div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<div class="tira">
+  <div class="tira-inner">
+    <span class="tira-label">Categorías</span>
+    <div class="cat-list">
+      <a href="#restaurantes" class="cat-chip active">Restaurantes</a>
+      <a href="#" class="cat-chip">Bares <span class="soon">Pronto</span></a>
+      <a href="#" class="cat-chip">Cafeterías <span class="soon">Pronto</span></a>
+      <a href="#" class="cat-chip">Antros <span class="soon">Pronto</span></a>
+      <a href="#" class="cat-chip">Tiendas <span class="soon">Pronto</span></a>
+      <a href="#" class="cat-chip">Viajes <span class="soon">Pronto</span></a>
+    </div>
+  </div>
+</div>
+
+<section id="como">
+  <div class="container">
+    <span class="eyebrow">Sin complicaciones</span>
+    <h2>Cuatro pasos. <em>Nada más.</em></h2>
+    <p class="section-desc">Sin descargas, sin contraseñas complicadas. Si necesitas ayuda en cualquier paso, llámanos.</p>
+    <div class="how-steps">
+      <div class="step">
+        <div class="step-num">01</div>
+        <h3>Compra tu cuponera</h3>
+        <p>Pago único y seguro por internet, o por teléfono si lo prefieres.</p>
+      </div>
+      <div class="step">
+        <div class="step-num">02</div>
+        <h3>Entra a tu cuenta</h3>
+        <p>Desde tu celular o computadora, sin descargar nada.</p>
+      </div>
+      <div class="step">
+        <div class="step-num">03</div>
+        <h3>Muestra el cupón</h3>
+        <p>Le enseñas la pantalla al mesero cuando vayas a pagar.</p>
+      </div>
+      <div class="step">
+        <div class="step-num">04</div>
+        <h3>Repite cuando quieras</h3>
+        <p>Hasta 6 meses, varios cupones por visita, acumulables.</p>
+      </div>
+    </div>
+  </div>
+</section>
+
+<section class="rests" id="restaurantes">
+  <div class="container">
+    <span class="eyebrow">Diez lugares seleccionados</span>
+    <h2>Los restaurantes que ya están <em>esperándote.</em></h2>
+    <p class="section-desc">Todos verificados, con 6 descuentos exclusivos cada uno que no encuentras en ninguna otra plataforma.</p>
+    <div class="rests-grid">
+      <a href="#" class="rest-card">
+        <div class="rest-img"><span class="rest-badge">6 cupones</span><img src="https://www.puntosocialmx.com/img/rest1-1.jpg" alt="Güi Parrilla Coreana" loading="lazy"></div>
+        <div class="rest-meta"><span class="rest-name">Güi Parrilla Coreana</span><span class="rest-kind">Parrilla coreana</span></div>
+      </a>
+      <a href="#" class="rest-card">
+        <div class="rest-img"><span class="rest-badge">6 cupones</span><img src="https://www.puntosocialmx.com/img/rest2-1.jpg" alt="Nuut Grill" loading="lazy"></div>
+        <div class="rest-meta"><span class="rest-name">Nuut Grill</span><span class="rest-kind">Grill & mixología</span></div>
+      </a>
+      <a href="#" class="rest-card">
+        <div class="rest-img"><span class="rest-badge">6 cupones</span><img src="https://www.puntosocialmx.com/img/rest3-1.jpg" alt="Brioche" loading="lazy"></div>
+        <div class="rest-meta"><span class="rest-name">Brioche</span><span class="rest-kind">Bistró & brunch</span></div>
+      </a>
+      <a href="#" class="rest-card">
+        <div class="rest-img"><span class="rest-badge">6 cupones</span><img src="https://www.puntosocialmx.com/img/rest4-1.jpg" alt="Moo House" loading="lazy"></div>
+        <div class="rest-meta"><span class="rest-name">Moo House</span><span class="rest-kind">Hamburguesas premium</span></div>
+      </a>
+      <a href="#" class="rest-card">
+        <div class="rest-img"><span class="rest-badge">6 cupones</span><img src="https://www.puntosocialmx.com/img/rest5-1.jpg" alt="SipSip Pizza e Tintos" loading="lazy"></div>
+        <div class="rest-meta"><span class="rest-name">SipSip Pizza e Tintos</span><span class="rest-kind">Pizza & vinos</span></div>
+      </a>
+      <a href="#" class="rest-card">
+        <div class="rest-img"><span class="rest-badge">6 cupones</span><img src="https://www.puntosocialmx.com/img/rest6-1.jpg" alt="Wicklow Irish Pub" loading="lazy"></div>
+        <div class="rest-meta"><span class="rest-name">Wicklow Irish Pub</span><span class="rest-kind">Pub irlandés</span></div>
+      </a>
+      <a href="#" class="rest-card">
+        <div class="rest-img"><span class="rest-badge">6 cupones</span><img src="https://www.puntosocialmx.com/img/rest7-1.jpg" alt="La Taberna del Capitán" loading="lazy"></div>
+        <div class="rest-meta"><span class="rest-name">La Taberna del Capitán</span><span class="rest-kind">Mariscos & cortes</span></div>
+      </a>
+      <a href="#" class="rest-card">
+        <div class="rest-img"><span class="rest-badge">6 cupones</span><img src="https://www.puntosocialmx.com/img/rest8-1.jpg" alt="Sayil" loading="lazy"></div>
+        <div class="rest-meta"><span class="rest-name">Sayil</span><span class="rest-kind">Cocina mexicana</span></div>
+      </a>
+      <a href="#" class="rest-card">
+        <div class="rest-img"><span class="rest-badge">6 cupones</span><img src="https://www.puntosocialmx.com/img/rest9-1.jpg" alt="Ikebana Teppan" loading="lazy"></div>
+        <div class="rest-meta"><span class="rest-name">Ikebana Teppan</span><span class="rest-kind">Japonesa & teppanyaki</span></div>
+      </a>
+      <a href="#" class="rest-card">
+        <div class="rest-img"><span class="rest-badge">6 cupones</span><img src="https://www.puntosocialmx.com/img/rest10-1.jpg" alt="Mi Vida Loca" loading="lazy"></div>
+        <div class="rest-meta"><span class="rest-name">Mi Vida Loca</span><span class="rest-kind">Fusión & cocktails</span></div>
+      </a>
+    </div>
+  </div>
+</section>
+
+<section class="precio" id="cuponera">
+  <div class="container">
+    <div class="precio-grid">
+      <div>
+        <span class="eyebrow">La cuponera digital</span>
+        <h2>Un solo pago. <em>Seis meses</em> de ahorro.</h2>
+        <p class="precio-desc">Acceso inmediato a tus 60 cupones, sin membresías ni cargos recurrentes.</p>
+        <ul class="precio-features">
+          <li>10 restaurantes seleccionados</li>
+          <li>6 descuentos exclusivos por restaurante</li>
+          <li>60 cupones en total, acumulables por visita</li>
+          <li>Hasta 6 meses de vigencia</li>
+          <li>Acceso digital inmediato, sin descargas</li>
+          <li>Sin membresía ni cargos extra</li>
+        </ul>
+      </div>
+      <div class="precio-card">
+        <div class="precio-card-label">Cuponera Restaurantes</div>
+        <div class="precio-num"><span class="moneda">$</span>999</div>
+        <div class="precio-mxn">Pesos mexicanos · Pago único</div>
+        <div class="precio-ahorro">+ $15,000 de ahorro estimado</div>
+        <a href="#" class="btn btn-primary">Comprar mi cuponera →</a>
+        <div class="precio-card-foot">🔒 Pago seguro · Entrega inmediata</div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<section class="notif" id="notificaciones">
+  <div class="container">
+    <div class="notif-grid">
+      <div>
+        <span class="eyebrow">Para clientes con cuenta</span>
+        <h2>Avisos directos, <em>solo lo importante.</em></h2>
+        <p class="section-desc">
+          Activa las notificaciones que sí te interesan. Por WhatsApp, correo o SMS, tú eliges cómo y cuándo. Cancelas cuando quieras.
+        </p>
+
+        <form class="notif-form" onsubmit="event.preventDefault();mostrarExito();">
+          <div class="input-group">
+            <label for="nombre">Tu nombre</label>
+            <input type="text" id="nombre" placeholder="¿Cómo te llamas?" required>
+          </div>
+          <div class="input-group">
+            <label for="correo">Correo electrónico</label>
+            <input type="email" id="correo" placeholder="tucorreo@ejemplo.com" required>
+          </div>
+          <div class="input-group">
+            <label for="tel">WhatsApp (opcional)</label>
+            <input type="tel" id="tel" placeholder="442 123 4567">
+          </div>
+          <div class="checks">
+            <label class="check"><input type="checkbox" checked> Avísame de <strong>nuevos restaurantes</strong></label>
+            <label class="check"><input type="checkbox" checked> Recordatorio cuando un cupón esté <strong>por vencer</strong></label>
+            <label class="check"><input type="checkbox"> Quiero recibir <strong>promociones especiales</strong></label>
+          </div>
+          <button type="submit" class="notif-submit">Activar mis notificaciones</button>
+          <p class="notif-disclaimer">No compartimos tus datos. Puedes cancelar cuando quieras.</p>
+          <div class="notif-success" id="exito">✓ Listo. Te enviamos un correo para confirmar tu suscripción.</div>
+        </form>
+      </div>
+
+      <div class="notif-visual" aria-hidden="true">
+        <div class="notif-visual-head">
+          <div class="avatar">M</div>
+          <div>
+            <strong>Mi cuenta</strong>
+            <span>Preferencias de notificaciones</span>
+          </div>
+        </div>
+        <div class="notif-pref">
+          <div class="notif-pref-info">
+            <span class="notif-pref-name">Nuevos restaurantes</span>
+            <span class="notif-pref-desc">Te avisamos cuando se sume uno</span>
+          </div>
+          <div class="toggle on" onclick="this.classList.toggle('on')"></div>
+        </div>
+        <div class="notif-pref">
+          <div class="notif-pref-info">
+            <span class="notif-pref-name">Cupones por vencer</span>
+            <span class="notif-pref-desc">Un recordatorio antes de que expiren</span>
+          </div>
+          <div class="toggle on" onclick="this.classList.toggle('on')"></div>
+        </div>
+        <div class="notif-pref">
+          <div class="notif-pref-info">
+            <span class="notif-pref-name">Promociones especiales</span>
+            <span class="notif-pref-desc">Ofertas por temporadas</span>
+          </div>
+          <div class="toggle" onclick="this.classList.toggle('on')"></div>
+        </div>
+        <div class="notif-pref">
+          <div class="notif-pref-info">
+            <span class="notif-pref-name">Nuevas categorías</span>
+            <span class="notif-pref-desc">Bares, cafeterías, viajes…</span>
+          </div>
+          <div class="toggle on" onclick="this.classList.toggle('on')"></div>
+        </div>
+        <div class="notif-pref">
+          <div class="notif-pref-info">
+            <span class="notif-pref-name">Recibir por</span>
+            <span class="notif-pref-desc">Correo · WhatsApp · SMS</span>
+          </div>
+          <div style="display:flex;gap:6px;flex-wrap:wrap">
+            <span style="background:var(--gris-claro);color:var(--tinta);padding:6px 10px;border-radius:999px;font-size:13px;font-weight:600">Correo</span>
+            <span style="background:#25D366;color:#fff;padding:6px 10px;border-radius:999px;font-size:13px;font-weight:600">WhatsApp</span>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<section class="faq" id="preguntas">
+  <div class="container">
+    <span class="eyebrow">Antes de comprar</span>
+    <h2>Preguntas <em>frecuentes.</em></h2>
+    <p class="section-desc">Si no encuentras tu pregunta, llámanos al 448 120 2409.</p>
+    <div class="faqs">
+      <details class="faq-item">
+        <summary>¿Cuánto cuesta y qué incluye?</summary>
+        <div class="faq-item-content">
+          La cuponera de Restaurantes cuesta $999 MXN, en un solo pago. Incluye 60 descuentos exclusivos: 10 restaurantes con 6 cupones cada uno, vigentes por hasta 6 meses. El ahorro estimado supera los $15,000.
+        </div>
+      </details>
+      <details class="faq-item">
+        <summary>¿Necesito descargar una aplicación?</summary>
+        <div class="faq-item-content">
+          No. Tus cupones viven en tu cuenta en línea. Entras desde el navegador de tu celular o computadora, eliges el cupón y se lo muestras al mesero. Eso es todo.
+        </div>
+      </details>
+      <details class="faq-item">
+        <summary>¿Cómo funcionan las notificaciones?</summary>
+        <div class="faq-item-content">
+          Si tienes cuenta, puedes activar avisos cuando se sume un nuevo restaurante, cuando un cupón esté por vencer, o cuando lancemos promociones especiales. Tú decides si los recibes por correo, WhatsApp o SMS, y puedes cancelar cuando quieras desde tu cuenta.
+        </div>
+      </details>
+      <details class="faq-item">
+        <summary>¿Puedo usar varios cupones en la misma visita?</summary>
+        <div class="faq-item-content">
+          Sí. Los descuentos son acumulables en el mismo restaurante. Si vas con tu familia o amigos, puedes aprovechar más de un cupón por mesa.
+        </div>
+      </details>
+      <details class="faq-item">
+        <summary>¿Hay letra chiquita o restricciones raras?</summary>
+        <div class="faq-item-content">
+          No. Cada cupón aclara su vigencia y si aplica en días específicos, pero no hay sorpresas. Si tienes dudas sobre un cupón en particular, te las resolvemos por WhatsApp.
+        </div>
+      </details>
+    </div>
+  </div>
+</section>
+
+<section class="cta-final">
+  <div class="container">
+    <span class="eyebrow">Empieza hoy</span>
+    <h2>Una sola compra. <em>Sesenta descuentos.</em> Hasta seis meses.</h2>
+    <p class="section-desc">Únete a quienes ya ahorran en sus restaurantes favoritos.</p>
+    <a href="#cuponera" class="btn btn-primary">Comprar mi cuponera</a>
+
+    <div class="cta-final-contact">
+      <a href="tel:4481202409" class="contact-item">
+        <span class="contact-label">Llámanos</span>
+        <span class="contact-value">448 120 2409</span>
+      </a>
+      <a href="tel:4421366363" class="contact-item">
+        <span class="contact-label">Querétaro</span>
+        <span class="contact-value">442 136 6363</span>
+      </a>
+      <a href="https://wa.me/524481202409" class="contact-item">
+        <span class="contact-label">WhatsApp</span>
+        <span class="contact-value">Escríbenos</span>
+      </a>
+      <a href="mailto:soporte@puntosocialmx.com" class="contact-item">
+        <span class="contact-label">Correo</span>
+        <span class="contact-value">soporte@puntosocialmx.com</span>
+      </a>
+    </div>
+  </div>
+</section>
+
+<footer class="footer">
+  <div class="footer-inner">
+    <div>
+      <div class="footer-tag"><img src="https://www.puntosocialmx.com/img/logo-neg.png" alt="Punto Social"></div>
+      <p class="footer-desc">Descuentos exclusivos en los mejores restaurantes de la ciudad. Una sola compra, sesenta cupones, hasta seis meses.</p>
+      <div class="footer-redes" style="margin-top:20px">
+        <a href="#" aria-label="Facebook">f</a>
+        <a href="#" aria-label="Instagram">ig</a>
+        <a href="#" aria-label="TikTok">tk</a>
+        <a href="https://wa.me/524481202409" aria-label="WhatsApp">wa</a>
+      </div>
+    </div>
+    <div>
+      <h4>Explora</h4>
+      <a href="#como">Cómo funciona</a>
+      <a href="#restaurantes">Restaurantes</a>
+      <a href="#cuponera">Cuponera</a>
+      <a href="#notificaciones">Notificaciones</a>
+      <a href="#preguntas">Preguntas</a>
+    </div>
+    <div>
+      <h4>Categorías</h4>
+      <a href="#">Restaurantes</a>
+      <a href="#">Bares · pronto</a>
+      <a href="#">Cafeterías · pronto</a>
+      <a href="#">Antros · pronto</a>
+      <a href="#">Viajes · pronto</a>
+    </div>
+    <div>
+      <h4>Contacto</h4>
+      <a href="tel:4481202409">448 120 2409</a>
+      <a href="tel:4421366363">442 136 6363</a>
+      <a href="mailto:soporte@puntosocialmx.com">soporte@puntosocialmx.com</a>
+      <a href="https://wa.me/524481202409">WhatsApp</a>
+    </div>
+  </div>
+  <div class="footer-bottom">
+    <div>Punto Social 2025 © · Todos los derechos reservados.</div>
+    <div><a href="#" style="display:inline-block;margin-right:20px">Aviso de privacidad</a><a href="#" style="display:inline-block">Términos</a></div>
+  </div>
+</footer>
+
+<a href="https://wa.me/524481202409" class="wa" aria-label="Contactar por WhatsApp">💬</a>
+
+<script>
+function toggleMenu(btn){
+  const nav = document.getElementById('nav');
+  btn.classList.toggle('open');
+  nav.classList.toggle('open');
+}
+document.querySelectorAll('#nav a').forEach(a=>{
+  a.addEventListener('click', ()=>{
+    document.getElementById('nav').classList.remove('open');
+    document.querySelector('.menu-toggle').classList.remove('open');
+  });
+});
+function mostrarExito(){
+  const e = document.getElementById('exito');
+  e.classList.add('show');
+  setTimeout(()=>e.classList.remove('show'), 6000);
+}
+</script>
+
+</body>
+</html>
